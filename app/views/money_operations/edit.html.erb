@@ -1,0 +1,4 @@
+<div class="<%= @money_operation.is_spent ? "spend" : "income" %>_block">
+  <%= content_tag(:h1, (@money_operation.is_spent ? "Правка траты" : "Правка поступления")) %>
+  <%= render "money_operations/form", operation: @money_operation %>
+</div>

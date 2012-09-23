@@ -1,0 +1,9 @@
+<div class="<%= @money_operation.is_spent ? "spend" : "income" %>_block">
+  <%= content_tag(:h1, "Данные о #{(@money_operation.is_spent ? "трате" : "поступлении")}") %>
+  <b>Дата: </b> <%= @money_operation.created_at.strftime("%d.%m.%Y %H:%M") %><br>
+  <b>Сумма: </b> <%= @money_operation.amount_formatted %><br>
+  <b>Категория: </b> <%= @money_operation.category.try(:name) %><br>
+  <b>Кто <%= @money_operation.is_spent ? "потратил" : "внёс" %>: </b> <%= @money_operation.user.try(:show_name) %><br>
+  <b>Кто записал: </b> <%= @money_operation.creator.show_name %><br>
+  <b>Комментарий: </b> <%= @money_operation.comment %><br>
+</div>

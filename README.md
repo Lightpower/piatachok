@@ -1,4 +1,0 @@
-minibooker
-==========
-
-Home accounting

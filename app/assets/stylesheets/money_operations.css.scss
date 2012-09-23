@@ -1,0 +1,31 @@
+// Place all the styles related to the all project but not to the defined controller
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div.spend_block {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #F5FF64;
+  border-color: red;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  padding: 10px;
+  margin: 5px;
+
+}
+
+div.income_block {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #00ff32;
+  border-color: #00a320;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  padding: 10px;
+  margin: 5px;
+
+}
+

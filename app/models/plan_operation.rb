@@ -1,0 +1,3 @@
+class PlanOperation < Operation
+
+end

@@ -1,0 +1,3 @@
+class PlanCategory < Category
+
+end

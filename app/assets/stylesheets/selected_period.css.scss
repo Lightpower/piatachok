@@ -1,0 +1,27 @@
+// Place all the styles related to the all project but not to the defined controller
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#select_period {
+  display: inline-block;
+  padding: 3px;
+  font-family: "Sans";
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+
+  select {
+    width: 130px;
+  }
+}
+
+input.datepicker[type=text] {
+  width: 100px;
+  background-color: #FFFFFF;
+}
+
+input.datepicker[type=text]:disabled {
+  width: 100px;
+  background-color: #d3d3d3;
+
+}

@@ -1,0 +1,47 @@
+// Place all the styles related to the all project but not to the defined controller
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.input_row {
+
+  td {
+    vertical-align: top;
+  }
+  textarea {
+    width: 300px;
+    height: 50px;
+  }
+}
+
+table.grid {
+  margin-top: 10px;
+
+  th {
+    background-color: #FFD800;
+    border: 2px;
+    border-color: #FFA203;
+    border-style: solid;
+    margin-right: 10px;
+  }
+
+  td.align_right {
+    text-align: right;
+
+  }
+
+  tr.spend td {
+    background-color: #F5FF64;
+    border: 1px;
+    border-color: red;
+    border-style: solid;
+    margin-right: 10px;
+  }
+  tr.income td {
+    background-color: #00ff32;
+    border-color: #00a320;
+    border: 1px;
+    border-style: solid;
+    margin-right: 10px;
+  }
+
+}

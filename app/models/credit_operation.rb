@@ -1,0 +1,3 @@
+class CreditOperation < Operation
+
+end

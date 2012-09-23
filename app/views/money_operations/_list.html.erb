@@ -1,0 +1,27 @@
+<table class="grid">
+  <thead>
+  <tr>
+    <th>Дата</th>
+    <th>Сумма</th>
+    <th>Категория</th>
+    <th>Пользователь</th>
+    <th>Комментарии</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% operations.each do |operation| %>
+  <tr class="<%= operation.amount < 0 ? "spend" : "income" %>" data-id="<%= operation.id %>">
+    <td><%= operation.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+    <td class="align_right"><%= operation.amount_formatted %></td>
+    <td><%= operation.category.name %></td>
+    <td><%= operation.user.try(:show_name) %></td>
+    <td><%= operation.comment %></td>
+    <td data-show_delete_url="<%= money_operation_path(operation) %>" data-edit_url="<%= edit_money_operation_path(operation) %>">
+      <%= link_to "Смотреть", money_operation_path(operation) %>
+      <%= link_to "Править", edit_money_operation_path(operation) %>
+      <%= link_to "Удалить", "#", class: "delete_operation" %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>

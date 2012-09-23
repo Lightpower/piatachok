@@ -1,0 +1,27 @@
+<%= form_for @money_operation do |f| %>
+  <%= hidden_field_tag(:operation_type, @money_operation.is_spent ? "spend" : "income") %>
+  <table class="input_row">
+    <thead>
+    <tr>
+      <th>Сумма</th>
+      <th>Категория</th>
+      <th>Пользователь</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= f.text_field :amount_formatted, class: "amount" %></td>
+      <td><%= f.select(:category_id, @money_categories) %></td>
+      <td><%= f.select(:user_id, @users_relatives) %></td>
+    </tr>
+    <tr>
+      <th>Комментарии</th>
+    </tr>
+    <tr>
+      <td colspan="3"><%= f.text_area :comment %></td>
+    </tr>
+    </tbody>
+  </table>
+  <%= f.submit "Отправить" %>
+
+<% end %>

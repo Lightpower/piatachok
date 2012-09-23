@@ -1,0 +1,19 @@
+<div class="top_panel">
+  <%= form_for money_operations_path, id: "money_operations", method: "get" do |f| %>
+    <%= render "shared/select_period", select_period: @select_period, day: @date_from %>
+    <div class="inline">
+      <%= check_box_tag("operation_type[spend]", @operation_type[:spend], @operation_type[:spend]) %>
+      <%= label_tag("operation_type[spend]", "Показывать траты") %>
+      <%= check_box_tag("operation_type[income]", @operation_type[:income], @operation_type[:income]) %>
+      <%= label_tag("operation_type[income]", "Показывать поступления") %>
+      <%= f.submit "Показать" %>
+    </div>
+  <% end %>
+
+</div>
+
+<% if @operations.present? %>
+  <%= render "money_operations/list", operations: @operations %>
+<% else %>
+
+<% end %>
