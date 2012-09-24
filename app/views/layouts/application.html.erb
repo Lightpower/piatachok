@@ -8,22 +8,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="row-fluid">
-  <div class="span12 header"><a href="/"><img src="/images/logo_head.jpg"></a></div>
-  <div class="row-fluid">
-    <div class="span2">
-      <%= render "layouts/menu" %><br>
+  <header class="main"><a href="/"><img src="/images/logo_head.jpg"></a></header>
 
-      <%= render "layouts/user_info" %><br>
+  <nav class="menu">
+    <%= render "layouts/menu" %><br>
 
-      <%= render "layouts/blitz_info" %>
-    </div>
-    <div class="span10">
-      <%#= show_flash %>
+    <%= render "layouts/user_info" %><br>
 
-      <%= yield %>
-    </div>
-  </div>
-</div>
+    <%= render "layouts/blitz_info" %>
+  </nav>
+
+  <section class="content">
+    <%#= show_flash %>
+
+    <%= yield %>
+  </section>
+
+  <aside class="aside_right">
+
+  </aside>
+
 </body>
 </html>
