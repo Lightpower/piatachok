@@ -40,10 +40,10 @@ RSpec.configure do |config|
 end
 
 def authenticate_user(role_or_user=nil)
-  # if user=nil and role=nil create admin by default
+  # if user=nil and role=nil create :user by default
   role = (role_or_user.class == Symbol) ? role_or_user : nil
   user = (role_or_user.class == User) ? role_or_user : nil
-  role ||= :admin_user
+  role ||= :user
   @user = user || FactoryGirl.create(role)
   @user.stub!(:sign_in_count).and_return(0)
   @user.stub!(:sign_in_count=)
