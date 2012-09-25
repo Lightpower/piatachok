@@ -4,9 +4,10 @@ describe MoneyOperationsController do
 
   context "unauthorized user" do
 
-    it "redirects to money_operations" do
+    it "redirects to home" do
       get :index
-      response.should_not redirect_to(money_operations_path)
+
+      response.should redirect_to(root_url)
     end
   end
 
@@ -18,7 +19,9 @@ describe MoneyOperationsController do
 
     it "redirects to money_operations" do
       get :index
-      response.should redirect_to(money_operations_path)
+
+      request.params.should_not be_blank
+      request.params["money_operation"][:is_spent].should be_true
     end
   end
 end
