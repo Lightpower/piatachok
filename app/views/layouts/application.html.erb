@@ -10,7 +10,7 @@
 <body>
   <header class="main"><a href="/"><img src="/images/logo_head.jpg"></a></header>
 
-  <nav class="menu">
+  <nav id="menu_container">
     <%= render "layouts/menu" %><br>
 
     <%= render "layouts/user_info" %><br>
@@ -18,7 +18,7 @@
     <%= render "layouts/blitz_info" %>
   </nav>
 
-  <section class="content">
+  <section class="main_content">
     <%#= show_flash %>
 
     <%= yield %>

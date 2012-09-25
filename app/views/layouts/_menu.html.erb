@@ -1,4 +1,4 @@
-<div id="navigate" class="nav">
+<nav id="control" class="menu">
   <ul>
     <% if current_user.blank? %>
       <%= content_tag(:li, link_to("Войти", new_user_session_path)) %>
@@ -19,4 +19,4 @@
     <% end %>
 
   </ul>
-</div>
+</nav>

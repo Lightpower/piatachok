@@ -1,10 +1,10 @@
 <% if current_user.present? && current_user.family.present? %>
   <div id="blitz_info">
     <table>
-      <tr> <td>Баланс семьи:</td><td> <%= family_balance %></td> </tr>
-      <tr> <td>Траты за день:</td><td> <%= family_dayly_spent %></td> </tr>
-      <tr> <td>Траты за месяц:</td><td> <%= family_monthly_spent %></td> </tr>
-      <tr> <td>Приход за месяц:</td><td> <%= family_monthly_income %></td> </tr>
+      <tr> <td>Баланс семьи:</td><td class="align_right"> <%= content_tag(:b, family_balance) %></td> </tr>
+      <tr> <td>Траты за день:</td><td class="align_right"> <%= content_tag(:b, family_dayly_spent) %></td> </tr>
+      <tr> <td>Траты за месяц:</td><td class="align_right"> <%= content_tag(:b, family_monthly_spent) %></td> </tr>
+      <tr> <td>Приход за месяц:</td><td class="align_right"> <%= content_tag(:b, family_monthly_income) %></td> </tr>
     </table>
   </div>
 <% end %>
