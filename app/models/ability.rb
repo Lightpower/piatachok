@@ -7,6 +7,8 @@ class Ability
     if user.id.present? # existing user
       can :manage, MoneyOperation,  family_id: user.family_id
       can :view, Category
+      can :view, User,              family_id: user.family_id
+      can :view, :money_operation_list
     else
 
     end
