@@ -10,7 +10,7 @@ describe HomeController do
     end
   end
 
-  context "unauthorized user" do
+  context "authorized user" do
     before :each do
       authenticate_user
     end
