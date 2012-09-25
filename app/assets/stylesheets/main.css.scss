@@ -2,9 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  font-family: Arial, sans-serif;
+}
 
 div.inline {
   display: inline;
+}
+
+div.inline-block {
+  display: inline-block;
 }
 
 header {
@@ -12,22 +19,23 @@ header {
   text-align: center;
 }
 
+div {
+  vertical-align: top;
+}
 
 nav, section, aside {
   display: -moz-inline-stack;
   display: inline-block;
-  *display: inline;
   vertical-align: top;
 }
 
-nav.menu {
+nav#menu_container {
   width: 200px;
   margin-right: 10px;
 }
 
-section.content {
+section.main_content {
   width: 700px;
-  padding: 10px;
   margin-right: 20px;
 }
 
@@ -35,7 +43,7 @@ aside {
   width: 200px;
 }
 
-div.content {
+section.content {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -59,7 +67,8 @@ div.content {
   }
 }
 
-div.nav {
+nav.menu {
+  display: block;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -75,37 +84,29 @@ div.nav {
   font-style: bold;
   font-size: 20px;
   ul {
-    margin-left: 8px;
+    margin: 0px;
+    padding: 4px;
     list-style-type: none;
+
   }
 
   li {
+    margin: 0px;
     height: 21px;
   }
   ul.submenu {
     font-style: bold;
     font-size: 14px;
+    padding: 0px 0px 0px 12px;
     li {
+      margin: 0px;
       height: 15px;
     }
 
   }
 }
 
-div#user_info {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  background-color: #FFD800;
-  border-color: #FFA203;
-  border-width: 2px 2px 2px 2px;
-  border-style: solid;
-  -webkit-box-shadow: 6px 6px 8px #282b1f;
-  -moz-box-shadow: 6px 6px 8px #282b1f;
-  box-shadow: 6px 6px 8px #282b1f;
-  padding: 3px;
-  font-family: "Sans";
-  font-style: bold;
+nav#user_info {
   font-size: 15px;
 
   li {
@@ -114,6 +115,7 @@ div#user_info {
 }
 
 div#blitz_info {
+  display: block;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
