@@ -1,11 +1,13 @@
 # encoding: utf-8
 class MoneyOperationsController < ApplicationController
+
   load_and_authorize_resource  except: [:index, :new]
 
   ##
   # List of Spends or Incomes
   #
   def index
+    authorize! :view, :money_operation_list
     if params[:operation_type].present?
       @operation_type = {}
       @operation_type[:spend] = params[:operation_type][:spend]
