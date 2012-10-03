@@ -66,10 +66,11 @@ class MoneyOperationsController < ApplicationController
   end
 
   def update
-    @money_operation.amount = (params[:money_operation][:amount_formatted].sub(",", ".").to_f * 100).to_i
-    @money_operation.amount *= -1 if params[:operation_type] == "spend"
+    params[:money_operation][:amount] = (params[:money_operation][:amount_formatted].sub(",", ".").to_f * 100).to_i
+    params[:money_operation][:amount] *= -1 if params[:operation_type] == "spend"
+    params[:money_operation].delete(:amount_formatted)
 
-    if @money_operation.save
+    if @money_operation.update_attributes(params[:money_operation])
       redirect_to money_operation_path(@money_operation)
     else
       redirect_to edit_money_operation_path(@money_operation)
