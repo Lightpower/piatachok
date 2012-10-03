@@ -1,4 +1,5 @@
 <div class="top_panel">
+  <h1>Список операций</h1>
   <%= form_for money_operations_path, id: "money_operations", method: "get" do |f| %>
     <%= render "shared/select_period", select_period: @select_period, day: @date_from %>
     <div class="inline">
