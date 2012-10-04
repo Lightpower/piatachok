@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120827224348) do
+ActiveRecord::Schema.define(:version => 20121004153000) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -30,6 +30,21 @@ ActiveRecord::Schema.define(:version => 20120827224348) do
 
   add_index "families", ["head_id"], :name => "index_families_on_head_id"
   add_index "families", ["name"], :name => "index_families_on_name"
+
+  create_table "invites", :force => true do |t|
+    t.integer  "family_id",                           :null => false
+    t.integer  "user_id"
+    t.string   "email"
+    t.boolean  "is_sent_to_email", :default => false, :null => false
+    t.integer  "created_by",                          :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "invites", ["created_by"], :name => "index_invites_on_created_by"
+  add_index "invites", ["family_id", "user_id"], :name => "index_invites_on_family_id_and_user_id", :unique => true
+  add_index "invites", ["family_id"], :name => "index_invites_on_family_id"
+  add_index "invites", ["user_id"], :name => "index_invites_on_user_id"
 
   create_table "operations", :force => true do |t|
     t.string   "type"
