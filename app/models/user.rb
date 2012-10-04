@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :login, :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :family_id
 
   belongs_to :family
+  has_many :invites
 
   # filters
   after_create :create_default_family,     if: Proc.new { self.family.blank? }

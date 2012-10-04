@@ -1,6 +1,7 @@
 class Family < ActiveRecord::Base
   # associations
   has_many :users
+  has_many :invites
   belongs_to :head, class_name: "User", foreign_key: :head_id
 
   validates_presence_of :name, :head
