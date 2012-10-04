@@ -9,6 +9,8 @@ class Ability
       can :view, Category
       can :view, User,              family_id: user.family_id
       can :view, :money_operation_list
+      can :view, Family,            id: user.family_id
+      can :manage, Family,          id: user.family_id, head: user
     else
 
     end
