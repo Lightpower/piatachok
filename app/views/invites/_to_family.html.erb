@@ -1,0 +1,10 @@
+<div class="to_family settings">
+  <h2>Меня пригласили</h2>
+  <% if invite_list.present? %>
+    <% invite_list.each do |invite| %>
+      <%= render "invites/invite", name: invite.name_for_user, can_manage: true %>
+    <% end %>
+  <% else %>
+    Нет приглашений
+  <% end %>
+</div>

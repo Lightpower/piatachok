@@ -1,0 +1,5 @@
+<div class="invite">
+  <%= content_tag(:span, name) %>
+  <%= link_to "V", "#", class: "accept_invite action_button", "data-url" => accept_invite_path(invite_id) if can_manage %>
+  <%= link_to "X", "#", class: "reject_invite action_button", "data-url" => reject_invite_path(invite_id) %>
+</div>
