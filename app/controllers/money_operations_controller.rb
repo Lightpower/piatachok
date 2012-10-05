@@ -7,7 +7,7 @@ class MoneyOperationsController < ApplicationController
   # List of Spends or Incomes
   #
   def index
-    authorize! :view, :money_operation_list
+    authorize! :view, MoneyOperation
     if params[:operation_type].present?
       @operation_type = {}
       @operation_type[:spend] = params[:operation_type][:spend]
