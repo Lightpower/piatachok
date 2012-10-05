@@ -5,6 +5,15 @@ Minibooker::Application.routes.draw do
 
   resources :money_operations
 
+  match "settings" => "settings#index"
+
+  resources :invite, only: [:create] do
+    member do
+      put :accept
+      put :reject
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
