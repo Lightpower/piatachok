@@ -1,0 +1,17 @@
+// Place all the styles related to the all project but not to the defined controller
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div.settings {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #FFD800;
+  border-color: #FFA203;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  padding: 10px;
+  margin: 5px;
+
+}
