@@ -1,0 +1,15 @@
+<% if can?(:manage, Family) %>
+  <div id="invite_new_user" class="settings">
+    <h2>Пригласить пользователя в семью</h2>
+    <span class="hint">Введите логин пользователя (если он уже зарегистрирован в нашей системе) или его email (если не зарегистрирован).</span>
+    <br>
+    <div class="inline">
+      <%= text_field_tag(:login_or_email) %>
+      <%= link_to "Пригласить", "#", id: :invite_user, class: "action_button" %>
+    </div>
+  </div>
+
+  <%= render "invites/from_family", invite_list: @invited_by_family %>
+<% end %>
+
+<%= render "invites/to_family", invite_list: @my_invites %>
