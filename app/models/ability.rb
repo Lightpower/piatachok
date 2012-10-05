@@ -5,12 +5,20 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if user.id.present? # existing user
-      can :manage, MoneyOperation,  family_id: user.family_id
+      can [:view, :read, :manage], MoneyOperation,  family_id: user.family_id
       can :view, Category
       can :view, User,              family_id: user.family_id
-      can :view, :money_operation_list
       can :view, Family,            id: user.family_id
       can :manage, Family,          id: user.family_id, head: user
+
+      # invite can be accepted by recipient user (not sender)
+      can :accept, Invite,   ["invites.created_by != ?", user.id] do |invite|
+        invite.creator != user
+      end
+      # invite can be rejected by both of sender and recipient
+      can :reject, Invite, Invite.all do |invite|
+        invite.connected_with?(user)
+      end
     else
 
     end
