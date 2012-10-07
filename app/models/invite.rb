@@ -1,5 +1,7 @@
 class Invite < ActiveRecord::Base
 
+  attr_accessible :family, :user, :creator, :is_sent_to_email
+
   belongs_to :family
   belongs_to :user
   belongs_to :creator, class_name: "User", foreign_key: :created_by
