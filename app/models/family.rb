@@ -8,32 +8,34 @@ class Family < ActiveRecord::Base
 
   attr_accessible :name, :head
 
-  ##
   # Calculate the balance of current user's family
-  #
   def balance
     format("%.2f", connection.execute("select SUM(amount) sum from operations where type='MoneyOperation' and family_id=#{self.id}").first["sum"].to_f / 100.to_f)
   end
 
-  ##
   # Calculate the sum which current user's family is spent today
-  #
   def dayly_spent
     format("%.2f", connection.execute("select SUM(amount) sum from operations where type='MoneyOperation' and (created_at between '#{Date.today.beginning_of_day}' and '#{Date.today.end_of_day}') and amount<0 and family_id=#{self.id}").first["sum"].to_f / 100.to_f)
   end
 
-  ##
   # Calculate the sum which current user's family is spent this month
-  #
   def monthly_spent
     format("%.2f", connection.execute("select SUM(amount) sum from operations where type='MoneyOperation' and (created_at between '#{Date.today.beginning_of_month}' and '#{Date.today.end_of_day}') and amount<0 and family_id=#{self.id}").first["sum"].to_f / 100.to_f)
   end
 
-  ##
   # Calculate the sum of incomes of current user's family this month
-  #
   def monthly_income
     format("%.2f", connection.execute("select SUM(amount) sum from operations where type='MoneyOperation' and (created_at between '#{Date.today.beginning_of_month}' and '#{Date.today.end_of_day}') and amount>0 and family_id=#{self.id}").first["sum"].to_f / 100.to_f)
+  end
+
+  # Invites which are made by this family
+  def invites_from_family
+    invites.where(:created_by => self.head)
+  end
+
+  # Invites which are made FOR this family
+  def invites_to_family
+    invites.where("created_by != ?", self.head.id)
   end
 
 end
