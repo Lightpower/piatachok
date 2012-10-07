@@ -20,7 +20,7 @@ class InvitesController < ApplicationController
                             is_sent_to_email: false)
       else
         respond_to do |format|
-          format.js { render json: { result: "Family not found", status: 404 } and return }
+          format.js { render json: { result: "Семья #{params[:invite][:family_name]} не найдена", status: 404 } and return }
         end
       end
 
@@ -37,7 +37,7 @@ class InvitesController < ApplicationController
       else
         #TODO: send the email with invite to user
         respond_to do |format|
-          format.js { render json: {result: "Email is sent", status: 204 } and return }
+          format.js { render json: {result: "Email с приглашением отправлен на адрес #{params[:invite][:user_data]}", status: 204 } and return }
         end
       end
 
@@ -50,7 +50,7 @@ class InvitesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.js { render json: {result: "failed", status: 500 } }
+        format.js { render json: {result: "Не удалось создать приглашение.", status: 500 } }
       end
     end
   end
@@ -68,16 +68,16 @@ class InvitesController < ApplicationController
       user.family_id = @invite.family_id
       if user.save!
         respond_to do |format|
-          format.js { render json: {result: "ok", status: 200 } }
+          format.js { render json: {result: "Приглашение принято", status: 200 } }
         end
       else
         respond_to do |format|
-          format.js { render json: {result: "failed", status: 500 } }
+          format.js { render json: {result: "Ошибка принятия приглашения", status: 500 } }
         end
       end
     else
       respond_to do |format|
-        format.js { render json: {result: "User not found", status: 404 } }
+        format.js { render json: {result: "Пользователь не найден", status: 404 } }
       end
     end
 
@@ -93,16 +93,16 @@ class InvitesController < ApplicationController
       authorize! :reject, @invite
       if @invite.delete
         respond_to do |format|
-          format.js { render json: {result: "ok", status: 200 } }
+          format.js { render json: {result: "Приглашение отклонено", status: 200 } }
         end
       else
         respond_to do |format|
-          format.js { render json: {result: "failed", status: 500 } }
+          format.js { render json: {result: "Ошибка отклонения приглашения", status: 500 } }
         end
       end
     else
       respond_to do |format|
-        format.js { render json: {result: "Invite not found", status: 404 } }
+        format.js { render json: {result: "Приглашение не найдено", status: 404 } }
       end
     end
   end
