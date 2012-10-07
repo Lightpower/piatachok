@@ -1,10 +1,22 @@
-<div class="from_family settings">
-  <h2>Приглашены в семью</h2>
-  <% if invite_list.present? %>
-    <% invite_list.each do |invite| %>
-      <%= render "invites/invite", name: invite.name_for_family, can_manage: false %>
+<div class="from_family family_settings">
+  <div id="invited_to_family" name="invited_to_family" class="block_half ">
+    <h3>Приглашены в семью</h3>
+    <% if invite_list[:from_family].present? %>
+      <% invite_list[:from_family].each do |invite| %>
+        <%= render "invites/invite", name: invite.name_for_family, invite_id: invite.id, can_manage: false %>
+      <% end %>
+    <% else %>
+      <span class="no_invites">Нет приглашений</span>
     <% end %>
-  <% else %>
-    Нет приглашений
-  <% end %>
+  </div>
+  <div id="want_to_family" name="want_to_family" class="block_half">
+    <h3>Просятся в семью</h3>
+    <% if invite_list[:to_family].present? %>
+      <% invite_list[:to_family].each do |invite| %>
+        <%= render "invites/invite", name: invite.name_for_family, invite_id: invite.id, can_manage: true %>
+      <% end %>
+    <% else %>
+      <span class="no_invites">Нет приглашений</span>
+    <% end %>
+  </div>
 </div>
