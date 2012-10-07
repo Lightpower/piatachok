@@ -1,0 +1,7 @@
+<div id="family_name_changing" name="family_name_changing" class="family_settings">
+  <h2>Сменить название семьи</h2>
+  <div class="inline">
+    <%= text_field_tag(:new_family_name, current_user.family.name, class: "family_name") %>
+    <%= link_to "Изменить", "#", id: :change_family_name, class: "action_button", "data-url" => family_path(current_user.family) %>
+  </div>
+</div>
