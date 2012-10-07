@@ -11,6 +11,11 @@ class Ability
       can :view, Family,            id: user.family_id
       can :manage, Family,          id: user.family_id, head: user
 
+
+      # invite to Family from current user
+      can :create, Invite
+      # invite from Family to some user can be created by family's head only
+      can :create_invite, Family,   head: user
       # invite can be accepted by recipient user (not sender)
       can :accept, Invite,   ["invites.created_by != ?", user.id] do |invite|
         invite.creator != user
