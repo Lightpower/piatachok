@@ -4,15 +4,29 @@
 
 
 div.invite {
-  display: inline;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   background-color: #AAAAAA;
   border-color: #555555;
   border-width: 1px 1px 1px 1px;
   border-style: solid;
-  padding: 10px;
-  margin: 5px;
+  padding: 3px;
+  margin: 1px;
+  font-size: 12px;
 
+  a.action_button {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+div.block_half {
+  display: inline-block;
+  width: 45%;
+  border-style: none;
 }
