@@ -56,6 +56,16 @@ class User < ActiveRecord::Base
     return_string
   end
 
+  # Invites which are made by this user
+  def invites_from_me
+    invites.where(:created_by => self)
+  end
+
+  # Invites which are made FOR this user
+  def invites_to_me
+    invites.where("created_by != ?", self.id)
+  end
+
   private
 
   # Filter for creating Family for new user
