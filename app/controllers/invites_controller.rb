@@ -14,10 +14,16 @@ class InvitesController < ApplicationController
       authorize! :create, Invite
       new_family = Family.find_by_name(params[:invite][:family_name])
       if new_family.present?
-        invite = Invite.new(family: new_family,
-                            user: current_user,
-                            creator: current_user,
-                            is_sent_to_email: false)
+        if current_user.family != new_family
+          invite = Invite.new(family: new_family,
+                              user: current_user,
+                              creator: current_user,
+                              is_sent_to_email: false)
+        else
+          respond_to do |format|
+            format.js { render json: { result: "Нельзя попроситься в свою же семью", status: 500 } and return }
+          end
+        end
       else
         respond_to do |format|
           format.js { render json: { result: "Семья #{params[:invite][:family_name]} не найдена", status: 404 } and return }
@@ -30,10 +36,16 @@ class InvitesController < ApplicationController
       # check if this user exists in database
       user = User.find_by_login(params[:invite][:user_data]) || User.find_by_email(params[:invite][:user_data])
       if user.present?
-        invite = Invite.new(family: current_user.family,
-                            user: user,
-                            creator: current_user,
-                            is_sent_to_email: false)
+        if current_user != user
+          invite = Invite.new(family: current_user.family,
+                              user: user,
+                              creator: current_user,
+                              is_sent_to_email: false)
+        else
+          respond_to do |format|
+            format.js { render json: { result: "Нельзя пригласить самого себя в свою семью", status: 500 } and return }
+          end
+        end
       else
         #TODO: send the email with invite to user
         respond_to do |format|
