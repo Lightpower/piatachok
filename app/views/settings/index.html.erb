@@ -1,4 +1,6 @@
 <% if can?(:manage, Family) %>
+  <h1 id="family_name_header" name="family_name_header"><%= current_user.family.name %></h1>
+  <%= render "families/rename" %>
   <div id="invite_new_user" class="family_settings">
     <h3>Пригласить пользователя в семью</h3>
     <span class="hint">Введите логин пользователя (если он уже зарегистрирован в нашей системе) или его email (если не зарегистрирован).</span>
