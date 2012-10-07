@@ -5,7 +5,7 @@ MB.invites = {
       field_name = input_object.attr("id"),
       user_data = input_object.val(),
       data_string = '{ "invite": { "' + field_name + '": "' + user_data + '"} }',
-      invite_block;
+      invite_block, message_class;
 
     data_string = jQuery.parseJSON(data_string);
 
@@ -27,8 +27,11 @@ MB.invites = {
           invite_block.children("span.no_invites").remove();
           invite_block.append(message.result);
           input_object.text("");
+          message_class = "notice";
 
-        }
+        }else{ message_class = "error" }
+
+        MB.messages.new(message_class, "Приглашение создано");
       });
 
   },
@@ -37,7 +40,8 @@ MB.invites = {
   // action_url contains link to access or reject action
   process: function(link_tag) {
     var action_url = $(link_tag).data("url"),
-        invite_block = $(link_tag).parents("div.block_half");
+        invite_block = $(link_tag).parents("div.block_half"),
+        message_class;
 
     $.ajax({
       type: 'PUT',
@@ -47,13 +51,17 @@ MB.invites = {
 
       if((message.status == 200) || (message.status == 404)) {
         $(link_tag).parents("div.invite").remove();
-      }
+        message_class = "notice";
+
+      }else{ message_class = "error" }
+
+      MB.messages.new(message_class, message.result);
       if(invite_block.children("div.invite").size() == 0) {
         invite_block.append('<span class="no_invites">Нет приглашений</span>');
       }
     });
 
-  },
+  }
 
 };
 
