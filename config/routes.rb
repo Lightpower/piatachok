@@ -14,6 +14,8 @@ Minibooker::Application.routes.draw do
     end
   end
 
+  resources :families, only: [:update]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
