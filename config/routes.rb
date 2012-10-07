@@ -7,7 +7,7 @@ Minibooker::Application.routes.draw do
 
   match "settings" => "settings#index"
 
-  resources :invite, only: [:create] do
+  resources :invites, only: [:create] do
     member do
       put :accept
       put :reject
