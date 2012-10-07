@@ -16,6 +16,7 @@ MB.invites = {
       data: data_string
     }).done(function(message){
 
+        message_class = (message.status >= 200 && message.status <= 210) ? "notice": "error";
         if(message.status == 201) {
           if(field_name == "family_name") {
             invite_block = $("div#i_want_to_family");
@@ -27,11 +28,12 @@ MB.invites = {
           invite_block.children("span.no_invites").remove();
           invite_block.append(message.result);
           input_object.text("");
-          message_class = "notice";
+          MB.messages.new(message_class, "Приглашение создано");
 
-        }else{ message_class = "error" }
+        }else{
+          MB.messages.new(message_class, message.result);
+        }
 
-        MB.messages.new(message_class, "Приглашение создано");
       });
 
   },
