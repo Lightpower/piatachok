@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(:version => 20121004153000) do
     t.integer  "user_id"
     t.integer  "created_by",  :null => false
     t.text     "comment"
+    t.integer  "family_id",   :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "family_id",   :null => false
   end
 
   add_index "operations", ["category_id"], :name => "index_operations_on_category_id"

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Minibooker::Application.load_tasks
+Piatachok::Application.load_tasks
