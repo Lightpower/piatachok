@@ -47,9 +47,15 @@ class InvitesController < ApplicationController
           end
         end
       else
-        #TODO: send the email with invite to user
-        respond_to do |format|
-          format.js { render json: {result: "Email с приглашением отправлен на адрес #{params[:invite][:user_data]}", status: 204 } and return }
+        if params[:invite][:user_data] =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/
+          #TODO: send the email with invite to user
+          respond_to do |format|
+            format.js { render json: {result: "Email с приглашением отправлен на адрес #{params[:invite][:user_data]}", status: 204 } and return }
+          end
+        else
+          respond_to do |format|
+            format.js { render json: {result: "Пользователь #{params[:invite][:user_data]} не найден! Вы можете ввести его email и снова пригласить. Мы вышлем ему приглашение на почту.", status: 404 } and return }
+          end
         end
       end
 
