@@ -52,4 +52,4 @@ production:
   database: piatachok_production
   pool: 5
   username: piatachok
-  password:
+  password: p14T4cH0k
