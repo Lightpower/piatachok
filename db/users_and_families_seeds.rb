@@ -2,7 +2,7 @@
 users_array = [
   %w{test1 Вася Пупкин vasya@poopking.com 123456},
   %w{test2 Маня Пупкина mary@poopking.com 123456},
-  %w{test2 Иван Иванов ivan.ivanoff@example.com 123456}
+  %w{test3 Иван Иванов ivan.ivanoff@example.com 123456}
 ]
 
 user = User.create(login: users_array[0][0], first_name: users_array[0][1], last_name: users_array[0][2],
