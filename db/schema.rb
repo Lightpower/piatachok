@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20121004153000) do
 
   create_table "families", :force => true do |t|
     t.string   "name",       :null => false
-    t.integer  "head_id",    :null => false
+    t.integer  "head_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20121004153000) do
     t.integer  "family_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
+    t.string   "email"
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -82,8 +82,9 @@ ActiveRecord::Schema.define(:version => 20121004153000) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["family_id"], :name => "index_users_on_family_id"
+  add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

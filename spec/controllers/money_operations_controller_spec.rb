@@ -24,7 +24,7 @@ describe MoneyOperationsController do
       it "renders :new" do
         get :index
 
-        response.status.should == 200
+        response.status.should == 302
         request.params["money_operation"][:is_spent].should be_true
         response.body.include?("<h1>Новая трата</h1>").should be_true
         response.body.include?("<h1>Список операций</h1>").should be_false

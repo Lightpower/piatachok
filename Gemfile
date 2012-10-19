@@ -44,6 +44,9 @@ group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'shoulda', require: false
+  gem 'shoulda'
   gem 'debugger'
+  gem 'fakeweb'
+  gem 'database_cleaner'
+  gem 'test-unit', require: 'test/unit' #this allows rake tasks to pass with :test env
 end

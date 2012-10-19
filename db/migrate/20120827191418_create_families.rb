@@ -2,7 +2,7 @@ class CreateFamilies < ActiveRecord::Migration
   def change
     create_table :families do |t|
       t.string :name,     null: false
-      t.integer :head_id, null: false
+      t.integer :head_id
 
       t.timestamps
     end
