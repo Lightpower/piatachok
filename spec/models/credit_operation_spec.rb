@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe CreditOperation do
   it "valid" do
-    object = CreditOperation.new(amount: 1, creator: FactoryGirl.create(:user))
+    family = FactoryGirl.create(:family)
+    user = family.users.last
+    object = CreditOperation.new(amount: 1, creator: user)
     object.should be_valid
     object.save.should be_true
   end

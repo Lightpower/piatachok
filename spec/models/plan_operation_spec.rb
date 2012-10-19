@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe PlanOperation do
   it "valid" do
-    object = PlanOperation.new(amount: 1, creator: FactoryGirl.create(:user))
+    family = FactoryGirl.build(:family)
+    family.save!
+    user = family.users.last
+    object = PlanOperation.new(amount: 1, creator: user)
     object.should be_valid
     object.save.should be_true
   end

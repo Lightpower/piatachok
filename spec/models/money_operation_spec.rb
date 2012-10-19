@@ -1,4 +1,4 @@
-credit_operation_spec.rbrequire 'spec_helper'
+require 'spec_helper'
 
 describe MoneyOperation do
   it "valid" do
