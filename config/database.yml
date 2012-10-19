@@ -49,7 +49,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: piatachok_production
+  database: piatachok
   pool: 5
   username: piatachok
-  password:
+  password: p14T4cH0k

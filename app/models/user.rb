@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessor :username
 
   belongs_to :family
-  has_many :invites
+  has_many   :invites
 
   # filters
   before_create  :validate_login_and_email
