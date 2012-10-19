@@ -19,6 +19,6 @@ class Operation < ActiveRecord::Base
   # before_filter for adding family_id to new operation
   #
   def add_family_id
-    self.family_id = self.user.family_id
+    self.family_id = self.user.family_id unless self.family_id
   end
 end
