@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :invites
 
   # filters
-  before_save  :validate_login_and_email
+  before_create  :validate_login_and_email
   after_create   :create_default_family,     if: Proc.new { self.family.blank? }
 
   # User can exist without family
