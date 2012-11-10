@@ -50,3 +50,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'test-unit', require: 'test/unit' #this allows rake tasks to pass with :test env
 end
+
+group :test do
+  gem 'fuubar'
+end
