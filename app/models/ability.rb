@@ -5,7 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if user.id.present? # existing user
-      can [:view, :read, :manage], MoneyOperation,  family_id: user.family_id
+      can [:view, :read, :manage, :destroy], MoneyOperation,  family_id: user.family_id
       can :view, Category
       can :view, User,              family_id: user.family_id
       can :view, Family,            id: user.family_id
