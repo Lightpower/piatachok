@@ -14,10 +14,12 @@
 ActiveRecord::Schema.define(:version => 20121004153000) do
 
   create_table "categories", :force => true do |t|
-    t.string "name"
-    t.string "type"
+    t.string  "name"
+    t.integer "family_id"
+    t.string  "type"
   end
 
+  add_index "categories", ["family_id"], :name => "index_categories_on_family_id"
   add_index "categories", ["name"], :name => "index_categories_on_name"
   add_index "categories", ["type"], :name => "index_categories_on_type"
 
