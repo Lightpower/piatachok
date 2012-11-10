@@ -9,7 +9,7 @@ class Operation < ActiveRecord::Base
 
   before_create :add_family_id, if: Proc.new { self.family_id.blank? }
 
-  attr_accessible :amount, :category_id, :user_id, :created_by, :creator, :comment, :family_id
+  attr_accessible :amount, :category_id, :user, :user_id, :created_by, :creator, :comment, :family
 
   TYPES = %w{MoneyOperation CreditOperation PlanOperation}
 
