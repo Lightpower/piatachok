@@ -58,7 +58,8 @@ describe MoneyOperationsController do
       render_views
 
       it "shows spending" do
-        FactoryGirl.create(:spending_operation, creator: @user, user: @user)
+        # Next row creates two new families (but shouldn't)
+        FactoryGirl.create(:spending_operation, family: @user.family, creator: @user, user: @user)
         money_operation = MoneyOperation.last
 
         get :show, id: money_operation.id
@@ -74,7 +75,7 @@ describe MoneyOperationsController do
       end
 
       it "shows incoming" do
-        FactoryGirl.create(:incoming_operation, creator: @user, user: @user)
+        FactoryGirl.create(:incoming_operation, family: @user.family, creator: @user, user: @user)
         money_operation = MoneyOperation.last
 
         get :show, id: money_operation.id
@@ -117,7 +118,7 @@ describe MoneyOperationsController do
       render_views
 
       it "opens spending form for editing" do
-        FactoryGirl.create(:spending_operation, creator: @user, user: @user)
+        FactoryGirl.create(:spending_operation, family: @user.family, creator: @user, user: @user)
         money_operation = MoneyOperation.last
 
         get :edit, id: money_operation
@@ -127,7 +128,7 @@ describe MoneyOperationsController do
       end
 
       it "opens incoming form for editing" do
-        FactoryGirl.create(:incoming_operation, creator: @user, user: @user)
+        FactoryGirl.create(:incoming_operation, family: @user.family, creator: @user, user: @user)
         money_operation = MoneyOperation.last
 
         get :edit, id: money_operation
@@ -183,7 +184,7 @@ describe MoneyOperationsController do
       it "updates existing spending" do
         FactoryGirl.create(:spend_category, name: "Category 1")
         FactoryGirl.create(:spend_category, name: "Category 2")
-        old_spending = FactoryGirl.create(:spending_operation, user: @user, creator: @user, category: SpendCategory.first)
+        old_spending = FactoryGirl.create(:spending_operation, family: @user.family, user: @user, creator: @user, category: SpendCategory.first)
         new_category = SpendCategory.last
 
 
@@ -205,7 +206,7 @@ describe MoneyOperationsController do
       it "updates existing incoming" do
         FactoryGirl.create(:income_category, name: "Category 1")
         FactoryGirl.create(:income_category, name: "Category 2")
-        old_incoming = FactoryGirl.create(:incoming_operation, user: @user, creator: @user, category: IncomeCategory.first)
+        old_incoming = FactoryGirl.create(:incoming_operation, family: @user.family, user: @user, creator: @user, category: IncomeCategory.first)
         new_category = IncomeCategory.last
         params = { operation_type: "income", id: old_incoming.id,
                    money_operation: {"amount_formatted"=>"101010", "category_id"=>new_category.id.to_s,
@@ -226,20 +227,16 @@ describe MoneyOperationsController do
 
 
     context "PUT :delete" do
+      render_views
 
       it "destroys operation" do
-        render_views
+        FactoryGirl.create(:spending_operation, family: @user.family, creator: @user, user: @user)
+        money_operation_id = MoneyOperation.last.id
 
-        it "shows spending" do
-          FactoryGirl.create(:spending_operation, creator: @user, user: @user)
-          money_operation_id = MoneyOperation.last.id
+        delete :destroy, id: money_operation_id
 
-          put :delete, id: money_operation_id
-
-          response.status.should == 200
-          MoneyOperation.find_by_id(money_operation_id).should be_nil
-        end
-
+        response.status.should == 302
+        MoneyOperation.find_by_id(money_operation_id).should be_nil
       end
     end
   end

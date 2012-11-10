@@ -2,7 +2,13 @@ require 'spec_helper'
 
 describe MoneyOperation do
   it "valid" do
-    object = MoneyOperation.new(amount: 1, creator: FactoryGirl.create(:user))
+    user = FactoryGirl.create(:user)
+    family = FactoryGirl.create(:family, head: user)
+    user.family = family
+    user.save!
+    user.reload
+
+    object = MoneyOperation.new(amount: 1, user: user, creator: user)
     object.should be_valid
     object.save.should be_true
   end
