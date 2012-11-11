@@ -1,0 +1,26 @@
+<h2>Категории трат</h2>
+<i>(будут доступны только вашей семье)</i>
+<table class="grid">
+  <thead>
+    <th>Категория</th>
+    <th><a href="#" id="add_spend_category" class="button">Добавить</a></th>
+  </thead>
+  <tbody>
+    <tr class="spend_category_row hidden">
+      <td colspan="2">
+        <%= form_for(:category, html: {id: "spend_category_form"}) do |f| %>
+          <%= f.text_field(:name) %>
+          <%= f.hidden_field(:type, value: "SpendCategory") %>
+          <%= f.submit("Сохранить") %>
+        <% end %>
+      </td>
+    </tr>
+  <% if @spend_categories.present? %>
+      <% @spend_categories.each do |item| %>
+        <tr data-id="<%= item.id %>">
+          <td><%= item.name %></td><td><%= link_to "Править", "#", class: "edit_spend_category button" %> <%= button_to "Удалить", category_path(item), confirm: "Удалить категорию?", method: :delete, class: "button" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
