@@ -6,11 +6,14 @@ class Ability
 
     if user.id.present? # existing user
       can [:view, :read, :manage, :destroy], MoneyOperation,  family_id: user.family_id
-      can :view, Category
-      can :view, User,              family_id: user.family_id
-      can :view, Family,            id: user.family_id
-      can :manage, Family,          id: user.family_id, head: user
+      # default categories
+      can :view, Category, family_id: nil
+      # user categories
+      can [:create, :manage, :view, :destroy], Category,  family_id: user.family_id
 
+      can :view, User,     family_id: user.family_id
+      can :view, Family,   id: user.family_id
+      can :manage, Family, id: user.family_id, head: user
 
       # invite to Family from current user
       can :create, Invite
