@@ -16,6 +16,10 @@ Piatachok::Application.routes.draw do
 
   resources :families, only: [:update]
 
+  resources :categories, only: [:index, :create, :update, :destroy]
+
+  #match "spend_categories" => "categories#create",     via: :post
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
