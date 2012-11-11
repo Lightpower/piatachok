@@ -3,9 +3,10 @@ class Category < ActiveRecord::Base
 
   validates_presence_of :name, :type
 
+  belongs_to :family
   validate :correct_type
 
-  attr_accessible :name
+  attr_accessible :name, :family_id, :family, :type
 
   ##
   # Classes for categories:
@@ -17,6 +18,10 @@ class Category < ActiveRecord::Base
   #
   TYPES = %w{SpendCategory IncomeCategory CreditCategory PlanCategory}
 
+
+  class << self
+
+  end
 
   private
 
