@@ -236,3 +236,7 @@ span.hint {
   font-style: italic;
   color: grey;
 }
+
+form.button_to, form.button_to div {
+  display: inline;
+}
