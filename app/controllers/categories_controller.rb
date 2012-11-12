@@ -10,6 +10,8 @@ class CategoriesController < ApplicationController
     authorize! :view, Family
     @spend_categories = SpendCategory.where(family_id: current_user.family.id)
     @spend_categories.order("name DESC") if @spend_categories.present?
+    @income_categories = IncomeCategory.where(family_id: current_user.family.id)
+    @income_categories.order("name DESC") if @income_categories.present?
   end
 
   ##

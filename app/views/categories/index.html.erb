@@ -1,3 +1,4 @@
+<div class="spend_block">
 <h2>Категории трат</h2>
 <i>(будут доступны только вашей семье)</i>
 <table class="grid">
@@ -24,3 +25,33 @@
     <% end %>
   </tbody>
 </table>
+</div>
+
+<div class="income_block">
+  <h2>Категории поступлений</h2>
+  <i>(будут доступны только вашей семье)</i>
+  <table class="grid">
+    <thead>
+    <th>Категория</th>
+    <th><a href="#" id="add_income_category" class="button">Добавить</a></th>
+    </thead>
+    <tbody>
+    <tr class="income_category_row hidden">
+      <td colspan="2">
+        <%= form_for(:category, html: {id: "income_category_form"}) do |f| %>
+          <%= f.text_field(:name) %>
+          <%= f.hidden_field(:type, value: "IncomeCategory") %>
+          <%= f.submit("Сохранить") %>
+        <% end %>
+      </td>
+    </tr>
+    <% if @income_categories.present? %>
+      <% @income_categories.each do |item| %>
+        <tr data-id="<%= item.id %>">
+          <td><%= item.name %></td><td><%= link_to "Править", "#", class: "edit_income_category button" %> <%= button_to "Удалить", category_path(item), confirm: "Удалить категорию?", method: :delete, class: "button" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
