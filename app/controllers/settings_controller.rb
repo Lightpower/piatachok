@@ -6,8 +6,6 @@ class SettingsController < ApplicationController
   #
   def index
     authorize! :view, Family
-
-    #@user_list = current_user.relatives(false)
     @my_invites = { from_me: current_user.invites_from_me,
                     to_me:  current_user.invites_to_me }
     @family_invites = { from_family: current_user.family.invites_from_family,
