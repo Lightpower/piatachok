@@ -20,6 +20,9 @@ class Category < ActiveRecord::Base
 
 
   class << self
+    def for_user(user)
+      where("family_id is null or family_id = ?", user.family_id).order(:name)
+    end
 
   end
 
