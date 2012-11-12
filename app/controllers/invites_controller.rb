@@ -58,7 +58,6 @@ class InvitesController < ApplicationController
           end
         end
       end
-
     end
 
     if invite && invite.save!
