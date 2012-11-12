@@ -106,7 +106,7 @@ class MoneyOperationsController < ApplicationController
 
     @money_operation.user_id = current_user.id
     @money_categories = @money_operation.is_spent ?
-        SpendCategory.all.map { |mc| [mc.name, mc.id] } : IncomeCategory.all.map { |mc| [mc.name, mc.id] }
+        SpendCategory.for_user(current_user).map { |mc| [mc.name, mc.id] } : IncomeCategory.for_user(current_user).map { |mc| [mc.name, mc.id] }
     @users_relatives = current_user.relatives(true).map {|u| [u.show_name, u.id]}
   end
 end
