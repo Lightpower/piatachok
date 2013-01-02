@@ -35,7 +35,7 @@ nav#menu_container {
 }
 
 section.main_content {
-  width: 700px;
+  width: 800px;
   margin-right: 20px;
 }
 
@@ -173,6 +173,8 @@ div#blitz_info {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+  color: #000000;
+  text-decoration: none;
   background-color: #AAAAAA;
   border-color: #000000;
   border-width: 1px 1px 1px 1px;
@@ -184,6 +186,23 @@ div#blitz_info {
   font-weight: bold;
   margin-top: 5px;
 }
+
+.action_button_min {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #000000;
+  text-decoration: none;
+  background-color: #AAAAAA;
+  border-color: #000000;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+}
+
 
 
 div.datetime_select select {

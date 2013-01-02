@@ -3,6 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div#select_period {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: inherit;
+  border-color: #FFA203;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+
   display: inline-block;
   padding: 3px;
   font-family: "Sans";
@@ -11,7 +19,7 @@ div#select_period {
   font-weight: bold;
 
   select {
-    width: 130px;
+    width: 175px;
   }
 }
 
