@@ -18,9 +18,9 @@
     <td><%= operation.user.try(:show_name) %></td>
     <td><%= operation.comment %></td>
     <td data-show_delete_url="<%= money_operation_path(operation) %>" data-edit_url="<%= edit_money_operation_path(operation) %>">
-      <%= link_to "Смотреть", money_operation_path(operation) %>
-      <%= link_to "Править", edit_money_operation_path(operation) %>
-      <%= link_to "Удалить", "#", class: "delete_operation" %></td>
+      <%= link_to "Смотреть", money_operation_path(operation), class: "action_button_min" %>
+      <%= link_to "Править", edit_money_operation_path(operation), class: "action_button_min" %>
+      <%= link_to "Удалить", "#", class: "delete_operation action_button_min" %></td>
   </tr>
   <% end %>
   </tbody>
