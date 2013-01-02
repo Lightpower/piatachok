@@ -19,7 +19,7 @@
   <% if @spend_categories.present? %>
       <% @spend_categories.each do |item| %>
         <tr data-id="<%= item.id %>">
-          <td><%= item.name %></td><td><%= link_to "Править", "#", class: "edit_spend_category button" %> <%= button_to "Удалить", category_path(item), confirm: "Удалить категорию?", method: :delete, class: "button" %></td>
+          <td><%= item.name %></td><td><%= link_to "Править", "#", class: "edit_spend_category action_button_min" %> <%= button_to "Удалить", category_path(item), confirm: "Удалить категорию?", method: :delete, class: "action_button_min" %></td>
         </tr>
       <% end %>
     <% end %>
@@ -48,7 +48,7 @@
     <% if @income_categories.present? %>
       <% @income_categories.each do |item| %>
         <tr data-id="<%= item.id %>">
-          <td><%= item.name %></td><td><%= link_to "Править", "#", class: "edit_income_category button" %> <%= button_to "Удалить", category_path(item), confirm: "Удалить категорию?", method: :delete, class: "button" %></td>
+          <td><%= item.name %></td><td><%= link_to "Править", "#", class: "edit_income_category action_button_min" %> <%= button_to "Удалить", category_path(item), confirm: "Удалить категорию?", method: :delete, class: "action_button_min" %></td>
         </tr>
       <% end %>
     <% end %>
