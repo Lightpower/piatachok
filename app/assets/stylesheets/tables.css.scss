@@ -41,11 +41,11 @@ table.grid {
       margin-right: 0px;
     }
   }
-  tr.spend td {
+  tr.spend td, td.spend {
     background-color: #F5FF64;
     border-color: red;
   }
-  tr.income td {
+  tr.income td, td.income {
     background-color: #00ff32;
     border-color: #00a320;
   }
