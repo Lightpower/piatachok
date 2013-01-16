@@ -1,0 +1,6 @@
+<% if current_user.present? && current_user.family.present? %>
+  <div id="blitz_info">
+    <b>Члены семьи:</b><br>
+    <%= current_user.relatives(true).map(&:show_name).join("<br>").html_safe %>
+  </div>
+<% end %>
