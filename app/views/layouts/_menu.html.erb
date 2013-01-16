@@ -14,7 +14,7 @@
         <li><%= link_to "Новое поступление", new_money_operation_path(money_operation: {is_spent: false}) %></li>
         <li><%= link_to "Список поступлений", money_operations_path(operation_type: { income: true }) %></li>
       </ul>
-      <li><%= link_to "Отчёты", "#" %></li>
+      <li><%= link_to "Отчёты", reports_path %></li>
       <li><a href="#" class="openable">+Настройки</a></li>
       <ul class="submenu hidden">
         <li><%= link_to "Семья", settings_path %></li>
