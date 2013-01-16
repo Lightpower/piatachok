@@ -1,4 +1,6 @@
 # encoding: utf-8
+
+
 class MoneyOperationsController < ApplicationController
 
   load_and_authorize_resource  except: [:index, :new]
@@ -108,5 +110,7 @@ class MoneyOperationsController < ApplicationController
     @money_categories = @money_operation.is_spent ?
         SpendCategory.for_user(current_user).map { |mc| [mc.name, mc.id] } : IncomeCategory.for_user(current_user).map { |mc| [mc.name, mc.id] }
     @users_relatives = current_user.relatives(true).map {|u| [u.show_name, u.id]}
+
+    @money_operation.created_at = Time.now
   end
 end
