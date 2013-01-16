@@ -1,0 +1,24 @@
+// Place all the styles related to the all project but not to the defined controller
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.report_button {
+  width: 60%;
+  display: inline-block;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #f5ff64;
+  border-color: red;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  margin-top: 8px;
+  padding: 2px;
+  text-decoration: none;
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 2px 3px #282b1f;
+  -moz-box-shadow: 2px 2px 3px #282b1f;
+  box-shadow: 2px 2px 3px #282b1f;
+}
