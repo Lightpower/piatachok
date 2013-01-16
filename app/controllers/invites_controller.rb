@@ -77,13 +77,15 @@ class InvitesController < ApplicationController
   # Method for AJAX callback
   #
   def accept
-    user = User.find_by_id(@invite.user_id).first
+    user = User.find_by_id(@invite.user_id)
     if user.present?
-      if user.family.users.size == 1
-        user.family.destroy
-      end
       user.family_id = @invite.family_id
       if user.save!
+        # Delete user's family if it was the last user
+        if user.family.users.size == 1
+          user.family.destroy
+        end
+        @invite.delete
         respond_to do |format|
           format.js { render json: {result: "Приглашение принято", status: 200 } }
         end
