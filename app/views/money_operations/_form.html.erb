@@ -6,6 +6,7 @@
       <th>Сумма</th>
       <th>Категория</th>
       <th>Пользователь</th>
+      <th>Дата</th>
     </tr>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
       <td><%= f.text_field :amount_formatted, class: "amount" %></td>
       <td><%= f.select(:category_id, @money_categories) %></td>
       <td><%= f.select(:user_id, @users_relatives) %></td>
+      <td><%= f.text_field :created_at, class: "datepicker" %></td>
     </tr>
     <tr>
       <th>Комментарии</th>
