@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 class MoneyOperation < Operation
 
   attr_accessor :is_spent, :amount_formatted
@@ -74,5 +75,11 @@ class MoneyOperation < Operation
     self.amount.present? ? format("%.2f", self.amount.abs.to_f / 100.to_f) : ""
   end
 
+  ##
+  # Return string of signed amount with 2 digits after decimal delimiter
+  #
+  def self.sum_formatted(sum)
+    sum.present? ? format("%.2f", sum.abs.to_f / 100.to_f) : "0"
+  end
 
 end
