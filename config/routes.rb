@@ -18,6 +18,12 @@ Piatachok::Application.routes.draw do
 
   resources :categories, only: [:index, :create, :update, :destroy]
 
+  resources :reports, only: [:index] do
+    collection do
+      get :single
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
