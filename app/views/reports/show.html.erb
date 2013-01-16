@@ -1,0 +1,21 @@
+<% report_path = single_reports_path if report_type == :single %>
+
+<div class="top_panel">
+  <%= content_tag(:h1, report_name) %>
+  <%= form_for report_path, id: "report_params", method: "get" do |f| %>
+    <%= render "filter", select_period: @select_period, period: @date_from..@date_to %>
+    <div class="inline">
+      <div class="inline-block">
+
+      </div>
+      <%= f.submit "Показать", class: "action_button" %>
+    </div>
+  <% end %>
+
+</div>
+
+<% if @table[:rows].present? %>
+  <%= render report_type.to_s, table: @table if report_path == single_reports_path %>
+<% else %>
+
+<% end %>

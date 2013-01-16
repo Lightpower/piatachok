@@ -1,0 +1,22 @@
+<table class="grid">
+  <thead>
+  <tr>
+    <% table[:titles].each do |category| %>
+      <%= content_tag(:th, category[:name]) %>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+    <% table[:rows].each do |row| %>
+      <tr>
+        <%= content_tag(:td, row[0]) %>
+        <% row[1..-1].each_with_index do |column, index| %>
+          <% class_name = "" %>
+          <% class_name = "income" if table[:titles][index+1][:type] == "IncomeCategory" %>
+          <% class_name = "spend" if table[:titles][index+1][:type] == "SpendCategory" %>
+          <%= content_tag(:td, MoneyOperation.sum_formatted(column), class: "align_right #{class_name}") %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
