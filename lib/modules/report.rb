@@ -10,7 +10,7 @@ module Report
       # categories for titles
       categories = MoneyOperation.where(family_id: family_id, created_at: period)
         .joins("INNER JOIN categories ON(operations.category_id = categories.id)")
-        .order("categories.type, categories.id")
+        .order("categories.type desc, categories.id")
         .select("categories.id, categories.name, categories.type").uniq
       # data for rows
       sums = MoneyOperation.where(family_id: family_id, created_at: period)
