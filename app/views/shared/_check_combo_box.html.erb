@@ -1,0 +1,21 @@
+<%# Input params:
+ name {string}        - name of text box
+ list {Array of Hash} - list of keys and texts and states for checkboxes
+
+ Example:
+   [{1 => "Group 1 Checked", value: 1},
+    {2 => "Group 2 Unchecked", value: 0}]
+ %>
+
+<div>
+  <%= text_field_tag(name, "<Выберите категории>", {readonly: true, class: :ccb_field}) %>
+  <div class="ccb_div" style="position: absolute; display: none; ">
+    <% list.each do |item| %>
+      <div class="inline">
+      <%= check_box_tag("ccb_group_#{item.first.first}", item[:value], item[:value], {class: "ccb_check_box", "data-id" => item.first.first}) %>
+      <%= label_tag("ccb_group_#{item.first.first}", item.first.last) %>
+      </div><br>
+    <% end %>
+  </div>
+
+</div>
