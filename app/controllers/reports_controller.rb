@@ -34,6 +34,18 @@ class ReportsController < ApplicationController
         @date_to = Date.today
     end
     @table = Report.single(current_user.family_id, @date_from..@date_to, 1)
+
+    @category_list = []
+    if @table[:titles].size > 1
+      @table[:titles][1..-1].each do |item|
+        @category_list << {item[:id] => item[:name], value: 1}
+      end
+    else
+      MoneyOperation.categories_of_family(current_user.family).each do |item|
+        @category_list << {item[:id] => item[:name], value: 1}
+      end
+    end
+
     render :show, locals: {report_name: "Простой отчёт", report_type: :single }
   end
 
