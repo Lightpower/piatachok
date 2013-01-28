@@ -65,5 +65,9 @@ module Piatachok
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # precompile images
+    config.assets.paths << "#{Rails.root}/app/assets/images"
+    config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif]
   end
 end
