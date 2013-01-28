@@ -1,7 +1,7 @@
 <div class="top_panel">
   <h1>Список операций</h1>
   <%= form_for money_operations_path, id: "money_operations", method: "get" do |f| %>
-    <%= render "shared/select_period", select_period: @select_period, day: @date_from %>
+    <%= render "shared/select_period", select_period: @select_period, period: @date_from..Date.today, title: "Период:", allow_change_end_date: false %>
     <div class="inline">
       <div class="inline-block">
         <%= check_box_tag("operation_type[spend]", @operation_type[:spend], @operation_type[:spend]) %>
