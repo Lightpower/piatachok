@@ -28,8 +28,25 @@ class MoneyOperation < Operation
     ##
     # List of operations by period
     #
-    def by_period(date_from=Date.today.beginning_of_day, date_to=Date.today.end_of_day)
-      where("created_at BETWEEN ? and ?", date_from, date_to).order("created_at DESC")
+    def by_period(period=Date.today.beginning_of_day..Date.today.end_of_day)
+      where(created_at: period)
+    end
+
+    ##
+    # Ordering by period
+    #
+    def order_by_period
+      order("created_at DESC")
+    end
+
+    ##
+    # Getting list of ID, NAME and TYPE of categories which was used by family
+    #
+    def categories_of_family(family_id)
+      MoneyOperation.where(family_id: family_id)
+      .joins("INNER JOIN categories ON(operations.category_id = categories.id)")
+      .order("categories.type desc, categories.id")
+      .select("categories.id, categories.name, categories.type").uniq
     end
   end
 
@@ -41,7 +58,7 @@ class MoneyOperation < Operation
   # date_to        {DateTime} - end of period
   #
   def self.index(operation_type, date_from, date_to, family_id)
-    operations = MoneyOperation.of_family(family_id).by_period(date_from, date_to)
+    operations = MoneyOperation.of_family(family_id).by_period(date_from..date_to).order_by_period
     if operation_type[:spend] && operation_type[:income]
       # show both of spends and incomes - no condition
     elsif operation_type[:spend]
