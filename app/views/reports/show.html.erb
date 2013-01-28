@@ -6,7 +6,7 @@
     <%= render "filter", select_period: @select_period, period: @date_from..@date_to %>
     <div class="inline">
       <div class="inline-block">
-
+        <%= render "shared/check_combo_box", name: :categories, list: @category_list %>
       </div>
       <%= f.submit "Показать", class: "action_button" %>
     </div>
