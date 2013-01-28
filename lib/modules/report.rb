@@ -8,10 +8,7 @@ module Report
     #
     def single(family_id, period, sampling_period)
       # categories for titles
-      categories = MoneyOperation.where(family_id: family_id, created_at: period)
-        .joins("INNER JOIN categories ON(operations.category_id = categories.id)")
-        .order("categories.type desc, categories.id")
-        .select("categories.id, categories.name, categories.type").uniq
+      categories = MoneyOperation.by_period(period).categories_of_family(family_id)
       # data for rows
       sums = MoneyOperation.where(family_id: family_id, created_at: period)
           .group("(current_date - created_at::timestamp::date)/#{sampling_period}")
@@ -21,8 +18,8 @@ module Report
           .sum(:amount)
       result =  { titles: [], rows: []}
       # titles
-      result[:titles] = [{ type: nil, name: "Дата"}]
-      categories.each {|item| result[:titles] << {type: item.type, name: item.name } }
+      result[:titles] = [{ id: nil, type: nil, name: "Дата"}]
+      categories.each {|item| result[:titles] << {id: item.id, type: item.type, name: item.name } }
       #rows
       (sums.keys.map(&:first).uniq || 0).each do |per|
         new_row = %W(#{Time.now.to_date - (per.to_i+1).days})
