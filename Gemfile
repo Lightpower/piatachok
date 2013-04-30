@@ -21,6 +21,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'execjs'
 end
 
 gem 'jquery-rails'
@@ -41,7 +42,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.0"
+  gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda'
@@ -53,4 +54,8 @@ end
 
 group :test do
   gem 'fuubar'
+end
+
+group :development do
+  gem 'mina', '~> 0.2.0'
 end
