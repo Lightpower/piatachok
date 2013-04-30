@@ -1,7 +1,7 @@
 app_path = '/srv/http/piatachok.net'
 
 working_directory File.join(app_path, 'current')
-pid File.join(app_path, 'shared/pids/unicorn.pid')
+pid File.join(app_path, 'shared/config/unicorn.pid')
 stderr_path File.join(app_path, 'shared/log/unicorn.log')
 stdout_path File.join(app_path, 'shared/log/unicorn.log')
 
