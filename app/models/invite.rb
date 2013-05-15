@@ -24,14 +24,14 @@ class Invite < ActiveRecord::Base
   # Define the name for showing in invite block for head of family
   #
   def name_for_family
-    name = (user.present? ? user.show_name : email )
+    (user.present? ? user.show_name : email )
   end
 
   ##
   # Define the name for showing in invite block for user
   #
   def name_for_user
-    name = family.name
+    family.name
   end
 
   ##
