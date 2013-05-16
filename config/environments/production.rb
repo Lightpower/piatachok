@@ -44,7 +44,7 @@ Piatachok::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Autoflush logs after each record
-  config.logger.auto_flushing = true
+  #config.logger.auto_flushing = true
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
