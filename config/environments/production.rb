@@ -1,7 +1,7 @@
 Piatachok::Application.configure do
 
   # Redefine logger if needed
-  config.logger ||= Rails.logger
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
 
   # Settings specified here will take precedence over those in config/application.rb
 
