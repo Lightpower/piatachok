@@ -1,4 +1,8 @@
 Piatachok::Application.configure do
+
+  # Redefine logger if needed
+  config.logger ||= Rails.logger
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -38,6 +42,9 @@ Piatachok::Application.configure do
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
+
+  # Autoflush logs after each record
+  config.logger.auto_flushing = true
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
