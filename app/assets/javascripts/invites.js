@@ -68,22 +68,22 @@ MB.invites = {
 };
 
 $(function() {
-  $("a#invite_user").live("click", function(e) {
+  $("a#invite_user").bind("click", function(e) {
     MB.invites.create(this);
     e.preventDefault();
   });
 
-  $("a#invite_to_family").live("click", function(e) {
+  $("a#invite_to_family").bind("click", function(e) {
     MB.invites.create(this);
     e.preventDefault();
   });
 
-  $("a.accept_invite").live("click", function(e) {
+  $("a.accept_invite").bind("click", function(e) {
     MB.invites.process(this);
     e.preventDefault();
   });
 
-  $("a.reject_invite").live("click", function(e) {
+  $("a.reject_invite").bind("click", function(e) {
     MB.invites.process(this);
     e.preventDefault();
   });

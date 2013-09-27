@@ -28,7 +28,7 @@ MB.families = {
 };
 
 $(function() {
-  $("a#change_family_name").live("click", function(e) {
+  $("a#change_family_name").bind("click", function(e) {
     MB.families.update(this);
     e.preventDefault();
   });
