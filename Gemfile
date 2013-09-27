@@ -39,23 +39,18 @@ gem 'unicorn'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
-  gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda'
-  gem 'debugger'
+  gem 'debugger-pry'
   gem 'fakeweb'
   gem 'database_cleaner'
-  gem 'test-unit', require: 'test/unit' #this allows rake tasks to pass with :test env
+  #gem 'test-unit', require: 'test/unit' #this allows rake tasks to pass with :test env
 end
 
 group :test do
   gem 'fuubar'
 end
 
-group :development do
-  gem 'mina', '~> 0.2.0'
-end
